@@ -72,7 +72,7 @@ cdef extern from "dada_hdu.h":
 
         # The Header Block key
         key_t header_block_key
-     
+
     # Create a new DADA Header plus Data Unit
     dada_hdu_t* dada_hdu_create (multilog_t* log)
 
@@ -82,7 +82,7 @@ cdef extern from "dada_hdu.h":
     # Destroy a DADA Header plus Data Unit
     void dada_hdu_destroy (dada_hdu_t* hdu)
 
-    # Connect the DADA Header plus Data Unit 
+    # Connect the DADA Header plus Data Unit
     int dada_hdu_connect (dada_hdu_t* hdu)
 
     # Connect the DADA Header plus Data Unit
@@ -118,3 +118,8 @@ cdef extern from "dada_hdu.h":
     # Return base addresses of header block buffers, nbufs and bufsz
     char ** dada_hdu_hb_addresses(dada_hdu_t * hdu, uint64_t * nbufs, uint64_t * bufsz)
 
+
+cdef extern from "dada_cuda.h":
+
+    # Register the dada buffer as pinned memory
+    int dada_cuda_dbregister (dada_hdu_t* hdu)

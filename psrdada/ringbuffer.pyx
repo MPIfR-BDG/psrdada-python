@@ -45,3 +45,8 @@ cdef class Ringbuffer:
         """Disconnect from PRS DADA ringbuffer"""
         dada_hdu.dada_hdu_disconnect(self._c_dada_hdu)
         self.isConnected = False
+
+    def pinned(self):
+        ret = dada_hdu.dada_cuda_dbregister(self._c_dada_hdu)
+        if ret < 0:
+            raise PSRDadaError("ERROR failed to register buffer as pinned memory with {}".format(ret))
