@@ -105,5 +105,5 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
-    ext_modules=cythonize(EXTENSIONS),
+    ext_modules=cythonize(EXTENSIONS, language_level=2),
 )
